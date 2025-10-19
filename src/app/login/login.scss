@@ -60,14 +60,12 @@ $font-family: 'Poppins', sans-serif;
     &.top-shape {
       top: 0;
       left: 0;
-      transform: skewY(-3deg);
       transform-origin: top left;
     }
 
     &.bottom-shape {
       bottom: 0;
       right: 0;
-      transform: skewY(-3deg);
       transform-origin: bottom right;
     }
 
@@ -85,6 +83,115 @@ $font-family: 'Poppins', sans-serif;
 
     &.bottom-shape::after {
       top: 0;
+    }
+  }
+
+  // Floating Icons in Background
+  .floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+
+    .floating-icon {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.15);
+      font-size: 2.5rem;
+      animation: floatAround 20s infinite ease-in-out;
+
+      &.icon-1 {
+        top: 15%;
+        left: 10%;
+        font-size: 3rem;
+        color: rgba($primary-color, 0.1);
+        animation-delay: 0s;
+        animation-duration: 18s;
+      }
+
+      &.icon-2 {
+        top: 25%;
+        right: 15%;
+        font-size: 2rem;
+        color: rgba($secondary-color, 0.12);
+        animation-delay: 2s;
+        animation-duration: 22s;
+      }
+
+      &.icon-3 {
+        top: 60%;
+        left: 8%;
+        font-size: 2.8rem;
+        color: rgba($third-color, 0.1);
+        animation-delay: 4s;
+        animation-duration: 20s;
+      }
+
+      &.icon-4 {
+        top: 70%;
+        right: 12%;
+        font-size: 2.2rem;
+        color: rgba($primary-color, 0.12);
+        animation-delay: 1s;
+        animation-duration: 24s;
+      }
+
+      &.icon-5 {
+        top: 40%;
+        left: 5%;
+        font-size: 3.5rem;
+        color: rgba($secondary-color, 0.08);
+        animation-delay: 3s;
+        animation-duration: 19s;
+      }
+
+      &.icon-6 {
+        top: 35%;
+        right: 8%;
+        font-size: 2.4rem;
+        color: rgba($third-color, 0.11);
+        animation-delay: 5s;
+        animation-duration: 21s;
+      }
+
+      &.icon-7 {
+        top: 80%;
+        left: 20%;
+        font-size: 2rem;
+        color: rgba($primary-color, 0.09);
+        animation-delay: 2.5s;
+        animation-duration: 23s;
+      }
+
+      &.icon-8 {
+        top: 20%;
+        right: 25%;
+        font-size: 2.6rem;
+        color: rgba($secondary-color, 0.1);
+        animation-delay: 4.5s;
+        animation-duration: 17s;
+      }
+
+      &.icon-9 {
+        top: 50%;
+        right: 5%;
+        font-size: 2.3rem;
+        color: rgba($third-color, 0.12);
+        animation-delay: 1.5s;
+        animation-duration: 25s;
+      }
+
+      &.icon-10 {
+        top: 10%;
+        left: 30%;
+        font-size: 2.8rem;
+        color: rgba($primary-color, 0.08);
+        animation-delay: 3.5s;
+        animation-duration: 22s;
+      }
     }
   }
 
@@ -316,6 +423,30 @@ $font-family: 'Poppins', sans-serif;
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+// Floating Icons Around Animation
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.15;
+  }
+  25% {
+    transform: translate(30px, -30px) rotate(90deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(0, -60px) rotate(180deg);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translate(-30px, -30px) rotate(270deg);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+    opacity: 0.15;
   }
 }
 
