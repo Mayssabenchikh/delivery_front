@@ -63,7 +63,7 @@ export class SignUpComponent {
           });
           this.termsAccepted.set(false);
           
-          // TODO: Rediriger vers login après 2 secondes
+          // TODO: Rediriger vers login après 2 secondessss
           setTimeout(() => {
             console.log('Redirect to login');
           }, 2000);
