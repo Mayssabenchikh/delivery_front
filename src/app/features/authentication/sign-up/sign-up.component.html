@@ -1,0 +1,200 @@
+<div class="signup-container">
+  <!-- Home Button -->
+  
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Left Side - Form -->
+    <div class="form-container">
+      <div class="form-card">
+        <h1 class="title">Sign Up</h1>
+        <div class="title-underline"></div>
+
+        <!-- Success Message -->
+        @if (successMessage()) {
+          <div class="alert alert-success">
+            {{ successMessage() }}
+          </div>
+        }
+
+        <!-- Error Message -->
+        @if (errorMessage()) {
+          <div class="alert alert-error">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <form class="signup-form" (ngSubmit)="onSubmit()">
+          <!-- Full Name and Phone -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input 
+                type="text" 
+                id="fullname" 
+                placeholder="Your Full name"
+                class="form-input"
+                [class.error]="fieldErrors()['name']"
+                [value]="formData().name"
+                (input)="updateField('name', $any($event.target).value)"
+                [disabled]="isLoading()"
+              />
+              @if (fieldErrors()['name']) {
+                <span class="error-text">{{ fieldErrors()['name'] }}</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                placeholder="+216 21 000 000"
+                class="form-input"
+                [class.error]="fieldErrors()['phone']"
+                [value]="formData().phone"
+                (input)="updateField('phone', $any($event.target).value)"
+                [disabled]="isLoading()"
+              />
+              @if (fieldErrors()['phone']) {
+                <span class="error-text">{{ fieldErrors()['phone'] }}</span>
+              }
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group full-width">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="youremail@domain.com"
+              class="form-input"
+              [class.error]="fieldErrors()['email']"
+              [value]="formData().email"
+              (input)="updateField('email', $any($event.target).value)"
+              [disabled]="isLoading()"
+            />
+            @if (fieldErrors()['email']) {
+              <span class="error-text">{{ fieldErrors()['email'] }}</span>
+            }
+          </div>
+
+          <!-- Address -->
+          <div class="form-group full-width">
+            <label for="address">Address</label>
+            <input 
+              type="text" 
+              id="address" 
+              placeholder="Street, City, Country"
+              class="form-input"
+              [class.error]="fieldErrors()['address']"
+              [value]="formData().address"
+              (input)="updateField('address', $any($event.target).value)"
+              [disabled]="isLoading()"
+            />
+            @if (fieldErrors()['address']) {
+              <span class="error-text">{{ fieldErrors()['address'] }}</span>
+            }
+          </div>
+
+          <!-- Password -->
+          <div class="form-group full-width">
+            <label for="password">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              placeholder="············"
+              class="form-input"
+              [class.error]="fieldErrors()['password']"
+              [value]="formData().password"
+              (input)="updateField('password', $any($event.target).value)"
+              [disabled]="isLoading()"
+            />
+            @if (fieldErrors()['password']) {
+              <span class="error-text">{{ fieldErrors()['password'] }}</span>
+            }
+          </div>
+
+          <!-- Terms and Policy -->
+          <div class="terms-group">
+            <input 
+              type="checkbox" 
+              id="terms"
+              [checked]="termsAccepted()"
+              (change)="termsAccepted.set($any($event.target).checked)"
+              [disabled]="isLoading()"
+            />
+            <label for="terms">I agree to all terms and policy</label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="signup-btn" [disabled]="isLoading()">
+            @if (isLoading()) {
+              <span class="spinner"></span>
+              Creating account...
+            } @else {
+              Sign Up
+            }
+          </button>
+
+          <!-- Login Link -->
+          <p class="login-link">
+            I already have an account
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Side - Illustration (garde le même code) -->
+    <div class="illustration-container">
+      <div class="illustration-wrapper">
+        <!-- Lock Icon -->
+        <div class="lock-icon">
+          <div class="lock-body">
+            <div class="lock-keyhole"></div>
+          </div>
+          <div class="lock-shackle"></div>
+        </div>
+
+        <!-- Key Icon -->
+        <div class="key-icon">
+          <div class="key-head"></div>
+          <div class="key-shaft"></div>
+          <div class="key-teeth"></div>
+        </div>
+
+        <!-- Car Icon -->
+        <div class="car-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 35h44v10a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V35z" fill="#FF8C42"/>
+            <path d="M15 28l8-8h18l8 8H15z" fill="#FF8C42"/>
+            <circle cx="18" cy="45" r="4" fill="#2C3E50"/>
+            <circle cx="46" cy="45" r="4" fill="#2C3E50"/>
+            <circle cx="18" cy="45" r="2" fill="#ecf0f1"/>
+            <circle cx="46" cy="45" r="2" fill="#ecf0f1"/>
+            <rect x="25" y="23" width="6" height="5" rx="1" fill="#34495e"/>
+            <rect x="33" y="23" width="6" height="5" rx="1" fill="#34495e"/>
+          </svg>
+        </div>
+
+        <!-- Location Pin -->
+        <div class="location-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#FF8C42"/>
+            <circle cx="12" cy="9" r="2.5" fill="white"/>
+          </svg>
+        </div>
+
+        <!-- Decorative Clouds -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+
+        <!-- Decorative Lines -->
+        <div class="deco-line line-1"></div>
+        <div class="deco-line line-2"></div>
+        <div class="deco-line line-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
