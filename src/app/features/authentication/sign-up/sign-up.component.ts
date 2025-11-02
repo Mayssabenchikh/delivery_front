@@ -1,6 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService, SignUpRequest } from '../../../core/services/auth.service';
 
@@ -121,8 +121,10 @@ export class SignUpComponent {
   }
 
   private isValidEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // Use Angular's built-in email validator for comprehensive validation
+    const emailControl = { value: email };
+    const validationResult = Validators.email(emailControl as any);
+    return validationResult === null;
   }
 
   updateField(field: keyof SignUpRequest, value: string): void {
