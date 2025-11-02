@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { SignUpComponent } from './features/authentication/sign-up/sign-up.component';
 import { Home } from './home/home';
-import { Login } from './login/login';
+import { Login } from './features/authentication/login/login';
 
 
 
