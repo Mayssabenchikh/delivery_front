@@ -1,12 +1,13 @@
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AuthService, SignUpRequest } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -63,9 +64,9 @@ export class SignUpComponent {
           });
           this.termsAccepted.set(false);
           
-          // TODO: Rediriger vers login après 2 secondessss
+          
           setTimeout(() => {
-            console.log('Redirect to login');
+            window.location.href = '/login';
           }, 2000);
         }
       },
