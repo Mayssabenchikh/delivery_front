@@ -1,7 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService, SignUpRequest } from '../../../core/services/auth.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { AuthService, SignUpRequest } from '../../../core/services/auth.service'
 })
 export class SignUpComponent {
   private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   // Formulaire
   formData = signal<SignUpRequest>({
@@ -66,7 +67,7 @@ export class SignUpComponent {
           
           
           setTimeout(() => {
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }, 2000);
         }
       },
